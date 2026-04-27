@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Class Research Project</title>
+    <title>Class Notes</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; overflow: hidden; }
-        iframe { width: 100vw; height: 100vh; border: none; }
+        body { background: #000; color: #0f0; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        input { padding: 10px; width: 300px; border: 1px solid #0f0; background: #000; color: #0f0; margin-bottom: 10px; }
+        button { padding: 10px 20px; background: #0f0; color: #000; border: none; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
+    <h2>SECURE PROXY PORTAL</h2>
+    <input type="text" id="urlInput" placeholder="Enter link (e.g. google.com)">
+    <button onclick="launchProxy()">GO</button>
 
-    <!-- This uses a GitHub-hosted proxy to pull the game assets -->
-    <iframe 
-        src="https://github.io" 
-        allow="autoplay; fullscreen" 
-        playsinline>
-    </iframe>
-
+    <script>
+        function launchProxy() {
+            var destination = document.getElementById('urlInput').value;
+            if (destination) {
+                // Strips http/https if you added it, then wraps in Google Translate
+                var cleanUrl = destination.replace(/^https?:\/\//, '');
+                window.location.href = 'https://google.com' + cleanUrl;
+            }
+        }
+    </script>
 </body>
 </html>
