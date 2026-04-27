@@ -1,47 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Battle Cats iOS Fix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Work Project</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; overflow: hidden; font-family: sans-serif; }
-        #overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #111; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; z-index: 10;
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: #000; 
+            overflow: hidden; 
         }
-        button {
-            padding: 20px 40px; font-size: 24px; background: #ffbd00;
-            border: none; border-radius: 50px; color: black; font-weight: bold;
-            box-shadow: 0 0 20px rgba(255,189,0,0.5); -webkit-appearance: none;
+        /* This makes the game fill the iPad screen perfectly */
+        iframe { 
+            width: 100vw; 
+            height: 100vh; 
+            border: none; 
         }
-        iframe { width: 100%; height: 100%; border: none; display: none; }
     </style>
 </head>
 <body>
 
-    <div id="overlay">
-        <button onclick="launchGame()">⚡ START BATTLE CATS</button>
-        <p style="color: #666; margin-top: 15px;">Tap to bypass iOS restrictions</p>
-    </div>
-
-    <iframe id="game-frame" 
-        src="https://now.gg" 
-        allow="autoplay; fullscreen; gamepad" 
-        playsinline>
+    <!-- Using the Forkphorus bridge to bypass domain filters -->
+    <iframe 
+        src="https://github.io" 
+        allowfullscreen 
+        allowtransparency="true"
+        allow="autoplay; fullscreen">
     </iframe>
 
-    <script>
-        function launchGame() {
-            // Hide the button and show the game
-            document.getElementById('overlay').style.display = 'none';
-            var frame = document.getElementById('game-frame');
-            frame.style.display = 'block';
-            
-            // Force a source refresh to trigger the load on user tap
-            frame.src = frame.src;
-        }
-    </script>
 </body>
 </html>
