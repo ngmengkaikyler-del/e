@@ -3,19 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Battle Cats - iOS Fix</title>
+    <title>Battle Cats iOS Fix</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; overflow: hidden; font-family: sans-serif; }
+        #overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #111; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; z-index: 10;
+        }
+        button {
+            padding: 20px 40px; font-size: 24px; background: #ffbd00;
+            border: none; border-radius: 50px; color: black; font-weight: bold;
+            box-shadow: 0 0 20px rgba(255,189,0,0.5); -webkit-appearance: none;
+        }
+        iframe { width: 100%; height: 100%; border: none; display: none; }
     </style>
 </head>
 <body>
-    <iframe 
+
+    <div id="overlay">
+        <button onclick="launchGame()">⚡ START BATTLE CATS</button>
+        <p style="color: #666; margin-top: 15px;">Tap to bypass iOS restrictions</p>
+    </div>
+
+    <iframe id="game-frame" 
         src="https://now.gg" 
-        allow="autoplay; fullscreen" 
-        playsinline 
-        webkitallowfullscreen 
-        mozallowfullscreen>
+        allow="autoplay; fullscreen; gamepad" 
+        playsinline>
     </iframe>
+
+    <script>
+        function launchGame() {
+            // Hide the button and show the game
+            document.getElementById('overlay').style.display = 'none';
+            var frame = document.getElementById('game-frame');
+            frame.style.display = 'block';
+            
+            // Force a source refresh to trigger the load on user tap
+            frame.src = frame.src;
+        }
+    </script>
 </body>
 </html>
